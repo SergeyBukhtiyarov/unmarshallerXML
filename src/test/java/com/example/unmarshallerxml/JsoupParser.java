@@ -1,8 +1,8 @@
 package com.example.unmarshallerxml;
 
 import com.example.unmarshallerxml.entity.OnOffDaily;
-import com.example.unmarshallerxml.service.JAXBParserService;
-import com.example.unmarshallerxml.service.OnOffLoaderService;
+import com.example.unmarshallerxml.service.JAXBParserXMLtoJavaObjectService;
+import com.example.unmarshallerxml.service.OnOffJsoupLoaderService;
 import com.example.unmarshallerxml.service.SaveToDBService;
 import com.example.unmarshallerxml.service.TempFileService;
 import org.jsoup.Connection;
@@ -19,7 +19,7 @@ public class JsoupParser {
 
 
     @Autowired
-    OnOffLoaderService onOffLoaderService;
+    OnOffJsoupLoaderService onOffLoaderService;
     @Autowired
     TempFileService tempFileService;
 
@@ -27,7 +27,7 @@ public class JsoupParser {
     SaveToDBService saveToDBService;
 
     @Autowired
-    JAXBParserService jaxbParserService;
+    JAXBParserXMLtoJavaObjectService jaxbParserService;
 
     @Test
     public void getXmlResponseFromWebsite() throws IOException, JAXBException {

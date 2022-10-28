@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 @Data
-@Entity
+//@Entity
 @XmlRootElement(name = "DocumentElement")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class OnOffDaily {

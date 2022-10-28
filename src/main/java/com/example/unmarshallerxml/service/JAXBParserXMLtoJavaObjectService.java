@@ -11,11 +11,11 @@ import java.io.File;
 import java.util.List;
 
 @Service
-public class JAXBParserService {
+public class JAXBParserXMLtoJavaObjectService {
 
     public OnOffDaily unmarshallFile(File file) throws JAXBException {
         OnOffDaily onOffDaily;
-        List<OnOffHourly> onOffHourlyList;
+
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(OnOffDaily.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();

@@ -20,8 +20,10 @@ public class TempFileService {
         File file = null;
         try {
             file = File.createTempFile("onOffDailyFile", ".brDailyTemp");
-            OutputStream outputStream = new FileOutputStream(file);
-            IOUtils.copy(response.bodyStream(), outputStream);
+           try (OutputStream outputStream = new FileOutputStream(file)){
+               IOUtils.copy(response.bodyStream(),outputStream);
+           }
+
 //            files.add(file);
         } catch (IOException e) {
             throw new RuntimeException(e);
