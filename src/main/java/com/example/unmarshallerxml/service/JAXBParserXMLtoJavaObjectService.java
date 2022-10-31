@@ -2,6 +2,7 @@ package com.example.unmarshallerxml.service;
 
 import com.example.unmarshallerxml.entity.OnOffDaily;
 import com.example.unmarshallerxml.entity.OnOffHourly;
+import com.example.unmarshallerxml.exceptions.OnOffDailyNotLoadedException;
 import org.springframework.stereotype.Service;
 
 import javax.xml.bind.JAXBContext;
@@ -22,7 +23,7 @@ public class JAXBParserXMLtoJavaObjectService {
             onOffDaily = (OnOffDaily) unmarshaller.unmarshal(file);
 
         } catch (JAXBException e) {
-            throw new RuntimeException(e);
+            throw new OnOffDailyNotLoadedException("not found region or bad date");
         }
 
         return onOffDaily;

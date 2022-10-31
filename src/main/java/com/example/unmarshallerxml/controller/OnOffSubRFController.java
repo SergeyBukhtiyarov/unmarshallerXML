@@ -1,6 +1,7 @@
 package com.example.unmarshallerxml.controller;
 
 import com.example.unmarshallerxml.entity.OnOffDaily;
+import com.example.unmarshallerxml.exceptions.OnOffDailyNotLoadedException;
 import com.example.unmarshallerxml.service.OnOffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,10 +21,15 @@ public class OnOffSubRFController {
     OnOffService onOffService;
 
     @GetMapping("/load")
-    public ResponseEntity<OnOffDaily> getOnOffbyDateAndRegion(@RequestParam(name = "data") String date,
+    public ResponseEntity<OnOffDaily> getOnOffbyDateAndRegion(@RequestParam(name = "date") String date,
                                                               @RequestParam(name = "region") int region) throws JAXBException {
+        OnOffDaily onOffDaily;
+        try {
+            onOffDaily = onOffService.getOnOffDaily(date, region);
+        }catch (OnOffDailyNotLoadedException e) {
+            return  new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
+        }
 
-       OnOffDaily onOffDaily= onOffService.getOnOffDaily(date,region);
 
         return new ResponseEntity<>(onOffDaily, HttpStatus.OK);
     }
