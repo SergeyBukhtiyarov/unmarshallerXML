@@ -12,3 +12,5 @@ mac: download Postgres.App
 
 =========================================================================================
 
+- get and parse XML (Jsoup/JAXB)
+- get and parse JSON( WebClient/ObjectMapper)
