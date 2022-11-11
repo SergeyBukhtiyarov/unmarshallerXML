@@ -21,7 +21,6 @@ public class OnOffJsoupLoaderService {
                     .execute();
         } catch (IOException e) {
             throw new RuntimeException(e);
-
         }
 
         return response;

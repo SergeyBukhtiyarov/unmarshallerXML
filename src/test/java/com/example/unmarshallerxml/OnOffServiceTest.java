@@ -1,14 +1,15 @@
 package com.example.unmarshallerxml;
 
+import com.example.unmarshallerxml.entity.OnOffDaily;
 import com.example.unmarshallerxml.service.OnOffJsoupLoaderService;
-import com.example.unmarshallerxml.service.OnOffRegionsJsoupLoaderService;
-import org.jsoup.Connection;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import com.example.unmarshallerxml.service.RegionsLoaderService;
+import com.example.unmarshallerxml.service.OnOffService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.xml.bind.JAXBException;
+import java.io.IOException;
 
 @SpringBootTest
 public class OnOffServiceTest {
@@ -16,20 +17,28 @@ public class OnOffServiceTest {
     OnOffJsoupLoaderService service;
 
     @Autowired
-    OnOffRegionsJsoupLoaderService onOffRegionsJsoupLoaderService;
+    OnOffService onOffService;
+
+    @Autowired
+    RegionsLoaderService regionsLoaderService;
 
     @Test
-    public void loadFromBRWebsiteWithWrongDate() {
-//        String date = "2022.10.10";
-//        Connection.Response response = service.load(date, 36);
-        //System.out.println(response.body());
-//        Connection.Response response = onOffRegionsJsoupLoaderService.loadRegions();
-//        System.out.println(response.bodyStream());
+    public void loadXMLfromSiteBR() throws JAXBException {
+        String date = "2022.10.10";
 
-        Document doc = onOffRegionsJsoupLoaderService.loadRegions();
-        System.out.println(doc);
-      Elements title=onOffRegionsJsoupLoaderService.getElement(doc);
-        System.out.println(title);
+
+        OnOffDaily onOffDaily = onOffService.getOnOffDaily(date, 36);
+        System.out.println(onOffDaily);
+    }
+
+    @Test
+    public void loadRegionsFromSiteBR() throws IOException {
+        regionsLoaderService.loadRegions();
+
+
 
     }
+
+
 }
+
