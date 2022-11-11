@@ -1,7 +1,6 @@
 package com.example.unmarshallerxml.service;
 
 import com.example.unmarshallerxml.entity.OnOffDaily;
-import com.example.unmarshallerxml.entity.OnOffHourly;
 import com.example.unmarshallerxml.exceptions.OnOffDailyNotLoadedException;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +8,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.util.List;
 
 @Service
 public class JAXBParserXMLtoJavaObjectService {

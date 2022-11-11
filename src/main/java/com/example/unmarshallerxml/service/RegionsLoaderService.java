@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class RegionsLoaderService {
         RestTemplate restTemplate = new RestTemplate();
         JsonNode resp = restTemplate.getForObject(url, JsonNode.class);
 //        System.out.println(resp.path("regions"));
-        resp.path("regions").forEach((jsonNode)-> System.out.println(mapper.convertValue(jsonNode,Region.class)));
+        resp.path("regions").forEach((jsonNode) -> System.out.println(mapper.convertValue(jsonNode, Region.class)));
 
 
         return regions;

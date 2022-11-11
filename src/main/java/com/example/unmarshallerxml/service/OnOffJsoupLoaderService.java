@@ -9,7 +9,7 @@ import java.io.IOException;
 @Service
 public class OnOffJsoupLoaderService {
 
-    public Connection.Response load(String date,int region) {
+    public Connection.Response load(String date, int region) {
 
         Connection.Response response;
         try {

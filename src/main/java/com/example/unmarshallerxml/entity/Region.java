@@ -12,7 +12,6 @@ public class Region {
     @JsonAlias("$id")
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int m_Item1;
     private long id;
     private String m_Item2;
